@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Small RBC Radio Clock</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Montserrat', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #121212; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #ffffff;
+        }
+
+        .clock-container {
+            display: flex;
+            flex-direction: row; 
+            align-items: center;
+            justify-content: center;
+            
+            padding: 15px 25px; 
+            border: 1px solid #333;
+            border-radius: 12px;
+            background: #1a1a1a;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.05); 
+            max-width: 450px; 
+        }
+
+        /* --- Logo Styling --- */
+        .logo-container {
+            margin-right: 20px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #logo-img {
+            width: 80px; /* Adjust size here if needed */
+            height: auto;
+            display: block;
+        }
+
+        /* --- Text Container Styling --- */
+        .text-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; 
+            justify-content: center;
+        }
+
+        /* --- Station Name --- */
+        #station-name {
+            font-weight: 900; 
+            font-size: 1.0rem; 
+            margin-bottom: 2px;
+            color: #ffffff; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.2); 
+            line-height: 1;
+        }
+
+        /* --- Time --- */
+        #time {
+            font-size: 2.2rem; 
+            font-weight: 700; 
+            color: #ffffff; 
+            letter-spacing: -1px; 
+            margin: 5px 0;
+            line-height: 1;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.4); 
+            font-variant-numeric: tabular-nums; 
+        }
+
+        /* --- Date --- */
+        #date {
+            font-size: 0.8rem; 
+            font-weight: 400;
+            color: #cccccc; 
+            margin-top: 2px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- Timezone Label --- */
+        #timezone-label {
+            font-size: 0.5rem; 
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #666; 
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="clock-container">
+        <div class="logo-container">
+            <img src="INSERT_YOUR_LOGO_LINK_HERE" alt="RBC Radio Logo" id="logo-img">
+        </div>
+
+        <div class="text-container">
+            <div id="station-name">RBC Radio</div>
+            <div id="time">00:00:00</div>
+            <div id="date">01 Jan, 1970</div>
+            <div id="timezone-label">UTC / GMT</div>
+        </div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+
+            const hours = String(now.getUTCHours()).padStart(2, '0');
+            const minutes = String(now.getUTCMinutes()).padStart(2, '0');
+            const seconds = String(now.getUTCSeconds()).padStart(2, '0');
+            
+            document.getElementById('time').textContent = `${hours}:${minutes}:${seconds}`;
+
+            const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            
+            const day = String(now.getUTCDate()).padStart(2, '0');
+            const monthName = months[now.getUTCMonth()];
+            const year = now.getUTCFullYear();
+
+            document.getElementById('date').textContent = `${day} ${monthName}, ${year}`;
+        }
+
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
+
+</body>
+</html>
