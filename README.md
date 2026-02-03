@@ -1,2 +1,2 @@
-# RBC Radio Clock
+# RBC Radio HTML Clock
 idk why u need this but i made it just for fun, enjoy i guess
