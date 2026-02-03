@@ -1,7 +1,9 @@
 # RBC Radio HTML Clock
 idk why u need this but i made it just for fun, enjoy i guess
 
-do not expect updates about this clock
+You can just copy and paste the code to anywhere supports HTML embed
+
+
 
 The clock looks like this: 
 
